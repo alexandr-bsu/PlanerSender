@@ -11,4 +11,4 @@ app.include_router(sender_router)
 async def check():
     return 'OK'
 
-# uvicorn.run(app, port=11111)
+uvicorn.run(app, port=11111)
