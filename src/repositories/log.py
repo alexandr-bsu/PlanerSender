@@ -1,5 +1,5 @@
-from src.repositories.repository import SupabaseRepository
-from src.config import settings, Mode
+from repositories.repository import SupabaseRepository
+from config import settings, Mode
 
 
 def get_table_name():

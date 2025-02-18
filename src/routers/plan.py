@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Body
 from typing import Annotated
-from src.services.planer import PlanerService
+from services.planer import PlanerService
 
 plan_router = APIRouter(prefix='/plan')
 

@@ -1,7 +1,7 @@
 from time import sleep
 
-from src.repositories.consumer import ConsumerRepo
-from src.repositories.log import QueueLogRepository
+from repositories.consumer import ConsumerRepo
+from repositories.log import QueueLogRepository
 
 from pyrogram import Client as pyro_client
 from pyrogram.raw.functions.contacts import ResolvePhone, ResolveUsername
@@ -63,6 +63,7 @@ class SenderService:
     def __init__(self):
         self.consumer = ConsumerRepo()
         self.log = QueueLogRepository()
+        self.count_sends = 0
 
 
     async def run(self):
@@ -81,9 +82,14 @@ class SenderService:
                         try:
                             await pyro.send_message(user['user_id'], message['message'])
                             self.log.update_by_queue_id(id, {'state': 'successful'})
+                            self.count_sends += 1
                         except:
                             self.log.update_by_queue_id(id, {'state': 'error'})
                             self.consumer.send(message)
+
+            if self.count_sends >= 50:
+                sleep(86400)
+                self.count_sends = 0
 
             sleep(random.randint(60, 180))
 

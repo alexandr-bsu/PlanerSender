@@ -1,5 +1,5 @@
 from fastapi import APIRouter, BackgroundTasks
-from src.services.sender import SenderService
+from services.sender import SenderService
 import asyncio
 
 sender_router = APIRouter(prefix='/sender')

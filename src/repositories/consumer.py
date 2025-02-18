@@ -1,4 +1,4 @@
-from src.config import client, settings
+from config import client, settings
 
 class ConsumerRepo:
     def __init__(self):

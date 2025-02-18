@@ -1,5 +1,5 @@
 import pytest
-from src.config import settings, Mode
+from config import settings, Mode
 import asyncio
 
 

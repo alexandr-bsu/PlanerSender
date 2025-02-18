@@ -1,5 +1,5 @@
-from src.repositories.consumer import ConsumerRepo
-from src.repositories.log import QueueLogRepository
+from repositories.consumer import ConsumerRepo
+from repositories.log import QueueLogRepository
 
 class PlanerService:
     def __init__(self):
