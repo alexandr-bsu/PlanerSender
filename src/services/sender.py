@@ -77,19 +77,23 @@ class SenderService:
             if message:
                 id, message = message[0]['msg_id'], message[0]['message']
                 user = await resolve_contact(message['username'])
+                print('-------user-------', message['username'])
                 if user:
                    async with pyro:
                         try:
                             await pyro.send_message(user['user_id'], message['message'])
                             self.log.update_by_queue_id(id, {'state': 'successful'})
                             self.count_sends += 1
+
                         except:
                             self.log.update_by_queue_id(id, {'state': 'error'})
                             self.consumer.send(message)
 
             if self.count_sends >= 50:
+                print('----deeeep-sleeeep-----')
                 sleep(86400)
                 self.count_sends = 0
 
+            print('------sleeeep-----')
             sleep(random.randint(60, 180))
 
