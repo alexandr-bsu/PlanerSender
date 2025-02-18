@@ -5,7 +5,7 @@ services:
       context: .
     env_file:
       - .prod.env
-    container_name: api_prod
+    container_name: app_planer
     command: [ "/fastapi_app/docker/app.sh" ]
     ports:
       - ${API_PORT_PROD}:8000
@@ -15,7 +15,7 @@ services:
       context: .
     env_file:
       - .test.env
-    container_name: api_test
+    container_name: app_planner_test
     command: [ "/fastapi_app/docker/app_test.sh" ]
     ports:
       - ${API_PORT_TEST}:8001
