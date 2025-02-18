@@ -1,0 +1,12 @@
+services:
+
+  pytest:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: pytest
+    ports:
+      - "8002:80"
+    env_file:
+      - .test.env
+    command: sh -c "pytest -v"
